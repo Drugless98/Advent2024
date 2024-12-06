@@ -1,0 +1,11 @@
+part one
+1 - locations are listed as "location ID"
+2 - Have 2 lists of numbers
+3 - pair lowest in each list and find the difference. 
+4 - Then second lowest ect. ect. 
+5 - Sum up all distances 
+6 - return 
+
+part two 
+1 - two lists of numbers
+2 - similarity score is calculated as "left_number * number_of_appearance_in_right"

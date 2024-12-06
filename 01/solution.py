@@ -15,8 +15,8 @@ def part_two():
 
     first_col = data[:,0]
     second_col= data[:,1]
-
     sim_score = [first_col[i] * len(np.where(second_col == first_col[i])[0]) for i in range(len(first_col))]
+    
     return np.sum(sim_score)
 
 

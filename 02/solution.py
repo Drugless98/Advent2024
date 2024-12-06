@@ -41,7 +41,6 @@ def part_two():
                 if helper(sub_arr):
                     safe_count = safe_count + 1
                     break
-                
     return safe_count
 
 if __name__ == "__main__":

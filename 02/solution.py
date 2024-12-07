@@ -37,7 +37,7 @@ def part_two():
             for i in range(1, len(level)+1): ##: Eew, ugly ass nested loop.
                 split_arry = level[0:i-1]
                 sub_arr = split_arry + level[i:len(level)]
-                
+
                 if helper(sub_arr):
                     safe_count = safe_count + 1
                     break

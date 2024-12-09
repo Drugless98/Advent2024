@@ -35,6 +35,7 @@ def part_two():
 
     ##: Calc
     multiplications = re.findall("(don't\(\)|do\(\)|mul\([0-9]*,[0-9]*\))", data)
+    print(multiplications)
     for exp in multiplications:
         match exp:
             case "do()":

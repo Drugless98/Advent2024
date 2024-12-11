@@ -84,7 +84,7 @@ def part_one():
 
 def part_two():
     data_file = open("04\\input.txt", "r").readlines()
-    data      = [dataline.replace("\n", "").replace(".", "K") for dataline in data_file]
+    data      = [dataline.replace("\n", "") for dataline in data_file]
 
     table = Table(data)
     sum = 0

@@ -93,24 +93,27 @@ def part_two():
         for x in range(len(table.Data_Table[0])):
             max_Y = len(table.Data_Table)-1
             max_X = len(table.Data_Table[0])-1
-            match (x,y), table.Data_Table[y,x]:
-                case (0, _, _):
-                    continue
-                case (_, 0, _):
-                    continue
-                case (max_Y, _, _):
-                    continue
-                case (_ , max_X, _):
-                    continue
-                case (_, _, "A"):
-                    pass
-                case _:
-                    continue
+            if x == 0 or y == 0 or x == max_X or y == max_Y:
+                continue
+            elif table.Data_Table[y][x] == "A":    
+                    NW_letter = table.Data_Table[y-1][x-1]
+                    NE_letter = table.Data_Table[y-1][x+1]
+                    SW_letter = table.Data_Table[y+1][x-1]
+                    SE_letter = table.Data_Table[y+1][x+1]
+
+                    pair_one = NW_letter + SE_letter
+                    pair_two = NE_letter + SW_letter
+
+                    xmas: bool = (pair_one == "MS" or pair_one == "SM") and (pair_two == "MS" or pair_two == "SM")
+                    sum = sum + 1 if xmas else sum
+            else:
+                continue
+    return sum
 
 if __name__ == "__main__":
     start_time = time.time()
-    #print(f"result is: {part_one()}")
-    #print(f"Solved part one in: {time.time()-start_time} Seconds")
+    print(f"result is: {part_one()}")
+    print(f"Solved part one in: {time.time()-start_time} Seconds")
 
     start_time = time.time()
     print(f"result is: {part_two()}")

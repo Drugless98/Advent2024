@@ -10,7 +10,6 @@ class Map:
         
         for line in range(len(data)):
             self.Board.append(list(data[line].replace("\n","")))
-                
 
             if "^" in data[line]:
                 self.Pos = (line, data[line].find("^"), "^")        #: Save pos of guard
@@ -91,10 +90,6 @@ class Map:
                     self.Board[Y][X] = self.turn("<")
                     self.Pos = (Y, X, self.turn("<"))
                 return False
-
-
-                
-
 
 def part_one():
     data_file = open("06\\input.txt").readlines()

@@ -134,12 +134,6 @@ def part_two():
             visited.add(map_simulate_and_find_loops.Pos)
     return loop_counter
 
-
-
-
-
-
-
 if __name__ == "__main__":
     start_time = time.time()
     print(f"result is: {part_one()}")

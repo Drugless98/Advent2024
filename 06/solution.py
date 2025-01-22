@@ -1,4 +1,5 @@
 import time
+import os
 import numpy as np
 import re
 
@@ -96,14 +97,16 @@ class Map:
                 return False
 
 def part_one():
-    data_file = open("06\\input.txt").readlines()
+    file_path = os.path.dirname(__file__)
+    data_file = open(f"{file_path}\\input.txt", "r").readlines()
     map = Map(data_file)
     while not map.iterate():
         continue
     return map.X_count+1
 
 def part_two():
-    data_file = open("06\\input.txt").readlines()
+    file_path = os.path.dirname(__file__)
+    data_file = open(f"{file_path}\\input.txt", "r").readlines()
     map_simulate_and_find_loops  = Map(data_file)
     map_main_traverse            = Map(data_file)
     already_added_obstructions  = set()

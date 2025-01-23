@@ -91,32 +91,48 @@ def part_two():
 
         for node_index in range(len(Xs)):
             p = grid.get_point(Xs[node_index], Ys[node_index])
+            anti_nodes.add((p.X, p.Y))
 
             for iterate_dict in range(node_index+1, len(Xs)):
                 target_point = grid.get_point(Xs[iterate_dict], Ys[iterate_dict])
+                anti_nodes.add((target_point.X, target_point.Y))
                 
                 new_point_1 = grid.move_point(p           , grid.dist_vector(target_point, p))
                 new_point_2 = grid.move_point(target_point, grid.dist_vector(p, target_point))
                 
+                temp_p = p
+                temp_target = target_point
                 while grid.point_validate(new_point_1):
                     anti_nodes.add((new_point_1.X, new_point_1.Y))
-                    anti_nodes.add((p.X, p.Y))
-                    new_point_1 = grid.move_point(new_point_1, grid.dist_vector(target_point, p))
+                    anti_nodes.add((temp_target.X, temp_target.Y))
+                    anti_nodes.add((temp_p.X, temp_p.Y))
 
+                    temp_target = temp_p
+                    temp_p = new_point_1
+                    new_point_1 = grid.move_point(new_point_1, grid.dist_vector(temp_target, temp_p))
+
+                temp_p = p
+                temp_target = target_point
                 while grid.point_validate(new_point_2):
                     anti_nodes.add((new_point_2.X, new_point_2.Y))
-                    anti_nodes.add((target_point.X, target_point.Y))
-                    new_point_2 = grid.move_point(new_point_2, grid.dist_vector(p, target_point))
+                    anti_nodes.add((temp_p.X, temp_p.Y))
+                    anti_nodes.add((temp_target.X, temp_target.Y))
+
+                    temp_p = temp_target
+                    temp_target = new_point_2
+                    new_point_2 = grid.move_point(new_point_2, grid.dist_vector(temp_p, temp_target))
+                
+
 
 
     temp_grid = grid.get_grid()
-    sum = 0
+    f = open("notes.txt", "w")
     for i in anti_nodes:
         temp_grid[i[0]][i[1]] = "#"
-        sum += 1
-        print(sum)
     for row in temp_grid:
-        print(row)
+        for j in row:
+            f.write(f"{j}")
+        f.write("\n")
     return len(anti_nodes)
 
 
